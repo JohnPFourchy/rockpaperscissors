@@ -2,17 +2,16 @@ function getComputerChoice() {
     let num = Math.floor(Math.random() * 3);
     switch(num) {
         case 0:
-            return "Rock";
+            return "rock";
         case 1:
-            return "Paper";
+            return "paper";
         case 2:
-            return "Scissors";
+            return "scissors";
     }
 }
 
 function singleRound(pc) {
-    let computerChoice = getComputerChoice();
-    let cc = computerChoice.toLowerCase();
+    let cc = getComputerChoice();
 
     // Player wins
     if(pc === "rock" && cc === "scissors") {
@@ -34,31 +33,27 @@ function singleRound(pc) {
     }
 }
 
-const rockBtn = document.querySelector(".rock");
-rockBtn.addEventListener("click", () => {
-    const result = singleRound("rock");
-    // Call display function
-});
+const display = document.querySelector(".display");
+const btns = document.querySelectorAll(".btn");
+btns.forEach(btn => btn.addEventListener("click", getResult));
 
-const paperBtn = document.querySelector(".paper");
-rockBtn.addEventListener("click", () => {
-    const result = singleRound("paper");
-    // Call display function
-});
-
-const scissorsBtn = document.querySelector(".scissors");
-rockBtn.addEventListener("click", () => {
-    const result = singleRound("scissors");
-    // Call display function
-});
-
-
-function game() {
-    // for(i = 0; i < 5; i++) {
-    //     cc = getComputerChoice();
-    //     pc = prompt("Rock, Paper, or Scissors?");
-    //     console.log(singleRound(pc, cc));
-    // }
+function getResult(e) {
+    let result = "";
+    if(e.target.textContent === "Rock") {
+        result = singleRound("rock");
+    } 
+    else if(e.target.textContent === "Paper") {
+        result = singleRound("paper");
+    } 
+    else {
+        result = singleRound("scissors");
+    }
+    displayResult(result);
 }
 
-game();
+
+function displayResult(result) {
+    const ptag = document.querySelector(".result");
+    ptag.textContent = result;
+    display.appendChild(ptag);
+}
