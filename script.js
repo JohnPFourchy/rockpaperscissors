@@ -10,8 +10,8 @@ function getComputerChoice() {
     }
 }
 
-function singleRound(playerChoice, computerChoice) {
-    let pc = playerChoice.toLowerCase();
+function singleRound(pc) {
+    let computerChoice = getComputerChoice();
     let cc = computerChoice.toLowerCase();
 
     // Player wins
@@ -34,12 +34,31 @@ function singleRound(playerChoice, computerChoice) {
     }
 }
 
+const rockBtn = document.querySelector(".rock");
+rockBtn.addEventListener("click", () => {
+    const result = singleRound("rock");
+    // Call display function
+});
+
+const paperBtn = document.querySelector(".paper");
+rockBtn.addEventListener("click", () => {
+    const result = singleRound("paper");
+    // Call display function
+});
+
+const scissorsBtn = document.querySelector(".scissors");
+rockBtn.addEventListener("click", () => {
+    const result = singleRound("scissors");
+    // Call display function
+});
+
+
 function game() {
-    for(i = 0; i < 5; i++) {
-        cc = getComputerChoice();
-        pc = prompt("Rock, Paper, or Scissors?");
-        console.log(singleRound(pc, cc));
-    }
+    // for(i = 0; i < 5; i++) {
+    //     cc = getComputerChoice();
+    //     pc = prompt("Rock, Paper, or Scissors?");
+    //     console.log(singleRound(pc, cc));
+    // }
 }
 
 game();
